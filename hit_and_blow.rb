@@ -32,6 +32,13 @@ def main
         error_messages = []
         error_messages << "数値を入力してください" unless user_input =~ /^[0-9]+$/
         error_messages << "入力桁数が#{answer_length}ではありません" unless user_input.length == answer_length
+        user_input.each_char do |ch|
+            unless user_input.count(ch) == 1
+                error_messages << "同じ数字が入力されています"
+                break
+            end
+        end
+
         unless  error_messages.empty?
             puts error_messages
             next
