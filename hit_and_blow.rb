@@ -20,9 +20,7 @@ def main
     puts "Hit&Blowを開始します"
     puts "答えは#{answer_length}桁です"
 
-    loop_count = 0
-    while true do
-        loop_count += 1
+    1.step do |loop_count|
 
         # ユーザー入力
         print "予想#{answer_length}桁を入力してください>> "
