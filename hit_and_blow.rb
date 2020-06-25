@@ -37,7 +37,7 @@ def main
             end
         end
 
-        unless  error_messages.empty?
+        unless error_messages.empty?
             puts error_messages
             next
         end
@@ -53,13 +53,11 @@ def main
 
         if hit == answer_length
             # 結果出力
-            puts "正解！終了！"
-            puts "#{loop_count}回目でクリアしました！"
+            puts "正解！終了！#{loop_count}回目でクリアしました！"
             break
         end
     end
 end
-
 
 if __FILE__ == $0
     main
