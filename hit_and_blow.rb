@@ -31,16 +31,11 @@ def main
         error_messages << "数値を入力してください" unless user_input =~ /^[0-9]+$/
         error_messages << "入力桁数が#{answer_length}ではありません" unless user_input.length == answer_length
         user_input.each_char do |ch|
-            unless user_input.count(ch) == 1
-                error_messages << "同じ数字が入力されています"
-                break
-            end
+            error_messages << "同じ数字が入力されています" unless user_input.count(ch) == 1
+            break unless user_input.count(ch) == 1
         end
-
-        unless error_messages.empty?
-            puts error_messages
-            next
-        end
+        puts error_messages unless error_messages.empty?
+        next unless error_messages.empty?
 
         # hitとblowの判定
         hit = 0
@@ -51,11 +46,9 @@ def main
         end
         puts "Hit:#{hit}、Blow:#{blow}"
 
-        if hit == answer_length
-            # 結果出力
-            puts "正解！終了！#{loop_count}回目でクリアしました！"
-            break
-        end
+        # 結果出力
+        puts "正解！終了！#{loop_count}回目でクリアしました！" if hit == answer_length
+        break if hit == answer_length
     end
 end
 
