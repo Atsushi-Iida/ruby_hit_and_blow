@@ -45,18 +45,11 @@ def main
         end
 
         # hitとblowの判定
-        i = 0
         hit = 0
         blow = 0
-        user_input.each_char do |ch|
-            if answer.include?(ch)
-                if answer.index(ch) == i
-                    hit += 1
-                else
-                    blow += 1
-                end
-            end
-            i += 1
+        user_input.each_char.with_index do |ch, i|
+            hit += 1 if answer.include?(ch) and answer.index(ch) == i
+            blow += 1 if answer.include?(ch) and answer.index(ch) != i
         end
         puts "Hit:#{hit}、Blow:#{blow}"
 
